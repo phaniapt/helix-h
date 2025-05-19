@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helix
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helix
+  template:
+    metadata:
+      labels:
+        app: helix
+    spec:
+      containers:
+      - name: helix
+        image: babu710/helix:latest
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: helix-service
+spec:
+  selector:
+    app: helix
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
