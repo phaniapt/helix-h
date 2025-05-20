@@ -61,10 +61,11 @@ pipeline:
           service:
             serviceRef: kubernetes_service
           environment:
-            environmentRef: ppd
+            environmentRef: iat
+            gitBranch: main
             deployToAll: false
             infrastructureDefinitions:
-              - identifier: infrakube
+              - identifier: new_infra
           execution:
             steps:
               - step:
