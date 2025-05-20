@@ -1,0 +1,5 @@
+service:
+  name: new_service
+  identifier: new_service
+  orgIdentifier: default
+  projectIdentifier: Testing
