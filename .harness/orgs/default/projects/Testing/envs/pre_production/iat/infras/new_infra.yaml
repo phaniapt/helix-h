@@ -1,0 +1,13 @@
+infrastructureDefinition:
+  name: new_infra
+  identifier: new_infra
+  orgIdentifier: default
+  projectIdentifier: Testing
+  environmentRef: iat
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: kubernetes
+    namespace: harness-delegate-ng
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
