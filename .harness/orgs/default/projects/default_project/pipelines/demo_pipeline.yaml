@@ -49,4 +49,5 @@ pipeline:
                     repo: devphani/harness_pipeline_docker_image
                     tags:
                       - harness_pipeline_docker_image
+                      - latest
                     caching: true
