@@ -45,9 +45,8 @@ pipeline:
                   name: BuildAndPushDockerRegistry_1
                   identifier: BuildAndPushDockerRegistry_1
                   spec:
-                    connectorRef: mydockerhub
+                    connectorRef: new_dockerhub
                     repo: devphani/harness_pipeline_docker_image
                     tags:
-                      - harness_pipeline_docker_image
                       - latest
                     caching: true
