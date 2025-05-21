@@ -48,4 +48,4 @@ pipeline:
                     connectorRef: mydockerhub
                     repo: devphani/harness_pipeline_docker_image
                     tags:
-                      - tagname
+                      - latest
