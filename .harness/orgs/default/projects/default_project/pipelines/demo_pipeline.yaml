@@ -48,4 +48,5 @@ pipeline:
                     connectorRef: mydockerhub
                     repo: devphani/harness_pipeline_docker_image
                     tags:
-                      - devphani/harness_pipeline_docker_image
+                      - harness_pipeline_docker_image
+                    caching: true
