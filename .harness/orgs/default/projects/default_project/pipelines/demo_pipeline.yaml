@@ -58,7 +58,7 @@ pipeline:
         spec:
           deploymentType: Kubernetes
           service:
-            serviceRef: newservice
+            serviceRef: newservice1
             serviceInputs:
               serviceDefinition:
                 type: Kubernetes
