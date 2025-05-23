@@ -25,7 +25,7 @@ metadata:
   labels:
     app: helix
 spec:
-  type: ClusterIP
+  type: loadbalancer
   ports:
     - port: 80
       targetPort: 8080
