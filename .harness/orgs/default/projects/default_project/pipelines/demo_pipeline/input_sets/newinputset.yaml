@@ -1,0 +1,32 @@
+inputSet:
+  pipeline:
+    identifier: demo_pipeline
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: main
+    stages:
+      - stage:
+          identifier: deploying_application
+          type: Deployment
+          spec:
+            service:
+              serviceInputs:
+                serviceDefinition:
+                  type: Kubernetes
+                  spec:
+                    artifacts:
+                      primary:
+                        primaryArtifactRef: new_test_artifact
+                        sources:
+                          - identifier: new_test_artifact
+                            type: DockerRegistry
+                            spec:
+                              tagRegex: latest
+  name: new-input-set
+  identifier: newinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
