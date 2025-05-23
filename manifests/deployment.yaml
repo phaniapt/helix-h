@@ -25,7 +25,7 @@ metadata:
   labels:
     app: helix
 spec:
-  type: loadbalancer
+  type: LoadBalancer
   ports:
     - port: 80
       targetPort: 8080
