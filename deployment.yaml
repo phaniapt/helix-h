@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: helix
+  labels:
+    app: helix
 spec:
   replicas: 1
   selector:
@@ -13,20 +15,44 @@ spec:
         app: helix
     spec:
       containers:
-      - name: helix
-        image: devphani/harness_pipeline_docker_image:v1
-        ports:
-        - containerPort: 8080
+        - name: helix
+          image: devphani/harness_pipeline_docker_image:v1
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: helix-service
+  labels:
+    app: helix
 spec:
+  type: NodePort
   selector:
     app: helix
   ports:
     - protocol: TCP
       port: 80
       targetPort: 8080
-  type: LoadBalancer
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: helix-ingress
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: helix-service
+                port:
+                  number: 80
