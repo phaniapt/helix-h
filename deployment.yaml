@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: helix
-        image: devphani/harness_pipeline_docker_image:latest
+        image: devphani/harness_pipeline_docker_image:v1
         ports:
         - containerPort: 8080
 ---
