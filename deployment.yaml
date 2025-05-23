@@ -20,21 +20,7 @@ spec:
           ports:
             - containerPort: 8080
           imagePullPolicy: Always
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: helix-service
-  labels:
-    app: helix
-spec:
-  type: NodePort
-  selector:
-    app: helix
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8080
+
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
