@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: helix
-        image: devphani/harness_pipeline_docker_image:latest
+        image: devphani/harness_pipeline_docker_image:v3
         ports:
         - containerPort: 8080
 ---
@@ -29,4 +29,27 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
-  type: LoadBalancer
+  type: ClusterIP
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: helix-ingress
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: helix-service
+                port:
+                  number: 80
