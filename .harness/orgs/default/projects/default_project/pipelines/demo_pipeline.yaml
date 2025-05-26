@@ -48,7 +48,7 @@ pipeline:
                     connectorRef: new_dockerhub
                     repo: devphani/harness_pipeline_docker_image
                     tags:
-                      - v3
+                      - latest
                     caching: true
     - stage:
         name: deploying application
