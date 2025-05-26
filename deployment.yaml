@@ -22,6 +22,24 @@ spec:
           imagePullPolicy: Always
 
 ---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: helix-service
+  labels:
+    app: helix
+spec:
+  type: LoadBalancer
+  selector:
+    app: helix
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+
+---
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -42,3 +60,4 @@ spec:
                 name: helix-service
                 port:
                   number: 80
+---
